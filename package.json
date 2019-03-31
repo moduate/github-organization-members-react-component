@@ -1,0 +1,24 @@
+{
+  "name": "github-organization-members-react-component",
+  "version": "1.0.0",
+  "description": "React component displaying a list of members belonging to a Github organization",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moduate/github-organization-members-react-component.git"
+  },
+  "keywords": [
+    "react",
+    "github",
+    "organization"
+  ],
+  "author": "Jason-Cooke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moduate/github-organization-members-react-component/issues"
+  },
+  "homepage": "https://github.com/moduate/github-organization-members-react-component#readme"
+}
