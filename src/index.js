@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import gom from 'github-organization-members';
+import Members from './Members';
 
 class Organization extends Component {
   constructor(props) {
     super(props);
-    this.state = { organization: "" };
+    this.state = {
+      organization: "",
+      members: []
+     };
   }
 
   updateOrganization = event => {
@@ -13,10 +17,10 @@ class Organization extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(gom.getPublicUsersFromOrg(this.state.organization, (err, result) => {
+    gom.getPublicUsersFromOrg(this.state.organization, (err, result) => {
       if(err) { console.log(err) }
-      console.log(result);
-    }))
+      this.setState({ members: result });
+    })
   }
 
   render() {
@@ -35,6 +39,7 @@ class Organization extends Component {
           </label>
           <button>Submit</button>
         </form>
+        <Members data={this.state.members}></Members>
       </div>
     )
   }
