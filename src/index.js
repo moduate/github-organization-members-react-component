@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
 import gom from 'github-organization-members';
 
 class Member extends Component {
