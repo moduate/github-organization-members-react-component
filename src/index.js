@@ -4,6 +4,7 @@ import gom from 'github-organization-members';
 class Member extends Component {
   constructor(props) {
     super(props);
+    this.state = { organization: "" };
   }
 
   render() {
