@@ -7,9 +7,23 @@ class Member extends Component {
     this.state = { organization: "" };
   }
 
+  updateOrganization = event => {
+    this.setState({ organization: event.target.value })
+  }
+
   render() {
     return (
-      <div></div>
+      <div style={{padding: '20px 10px'}}>
+        <label>
+          Enter Organization
+          <input
+            style={{ marginLeft: 5 }}
+            value={this.state.organization}
+            onChange={this.updateOrganization}
+          >
+          </input>
+        </label>
+      </div>
     )
   }
 }
