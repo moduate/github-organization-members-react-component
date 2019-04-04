@@ -6,8 +6,21 @@ class Members extends Component {
   }
 
   render() {
+    console.log(this.props.data)
     return (
-      <ul></ul>
+      <ul>
+        {
+          this.props.data.length?
+            this.props.data.map( (member, index) =>
+              <li
+                key={index}
+              >
+                {member.url}
+              </li>
+            ) :
+            null
+        }
+      </ul>
     )
   }
 }
