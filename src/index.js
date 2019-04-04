@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import gom from 'github-organization-members';
 
-class Member extends Component {
+class Organization extends Component {
   constructor(props) {
     super(props);
     this.state = { organization: "" };
@@ -40,4 +40,4 @@ class Member extends Component {
   }
 }
 
-export default Member;
+export default Organization;
