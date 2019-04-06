@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/moduate/github-organization-members-react-component/issues"
   },
-  "homepage": "https://github.com/moduate/github-organization-members-react-component#readme"
+  "homepage": "https://github.com/moduate/github-organization-members-react-component#readme",
+  "dependencies": {
+    "github-organization-members": "^1.1.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0"
+  }
 }
