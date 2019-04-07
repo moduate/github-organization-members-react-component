@@ -6,7 +6,6 @@ class Members extends Component {
   }
 
   render() {
-    console.log(this.props.data)
     return (
       <ul>
         {
@@ -14,6 +13,7 @@ class Members extends Component {
             this.props.data.map( (member, index) =>
               <li
                 key={index}
+                style={Styles.li}
               >
                 {member.url}
               </li>
@@ -26,3 +26,13 @@ class Members extends Component {
 }
 
 export default Members;
+
+const Styles = {
+  li: {
+    border: '1px black solid',
+    listStyleType: 'none',
+    display: 'inline-block',
+    padding: '10px 20px',
+    width: '500px'
+  }
+}
