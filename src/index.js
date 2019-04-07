@@ -7,6 +7,7 @@ class Organization extends Component {
     super(props);
     this.state = {
       organization: "",
+      error: "",
       members: []
      };
   }
@@ -18,8 +19,11 @@ class Organization extends Component {
   handleSubmit = event => {
     event.preventDefault();
     gom.getPublicUsersFromOrg(this.state.organization, (err, result) => {
-      if(err) { console.log(err) }
-      this.setState({ members: result });
+      if(err) {
+        this.setState({ error: "Invalid organization name. Please try again!", members: [] });
+        return err;
+      }
+      this.setState({ members: result, error: "" });
     })
   }
 
@@ -39,6 +43,7 @@ class Organization extends Component {
           </label>
           <button>Submit</button>
         </form>
+        <div style={{ color: 'red' }}>{this.state.error}</div>
         <Members data={this.state.members}></Members>
       </div>
     )
