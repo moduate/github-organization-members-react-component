@@ -15,7 +15,16 @@ class Members extends Component {
                 key={index}
                 style={Styles.li}
               >
-                {member.url}
+                <div style={{gridColumn: 1}}>
+                  <img
+                    src={member.avatar_url}
+                    style={Styles.img}
+                    alt="avatar"
+                  />
+                </div>
+                <div style={{gridColumn: 2, marginLeft: '20px'}}>
+                  {member.login}
+                </div>
               </li>
             ) :
             null
@@ -33,6 +42,13 @@ const Styles = {
     listStyleType: 'none',
     display: 'inline-block',
     padding: '10px 20px',
+    display: 'grid',
+    gridTemplateColumns: '100px 400px',
     width: '500px'
+  },
+  img: {
+    width: 100,
+    height: 100,
+    display: 'inline'
   }
 }
