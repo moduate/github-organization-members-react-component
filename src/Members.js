@@ -38,7 +38,7 @@ export default Members;
 
 const Styles = {
   li: {
-    border: '1px black solid',
+    borderBottom: '1px lightgrey solid',
     listStyleType: 'none',
     display: 'inline-block',
     padding: '10px 20px',
