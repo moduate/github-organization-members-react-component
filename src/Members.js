@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 class Members extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      active: ''
+    };
   }
 
   render() {
@@ -14,6 +17,7 @@ class Members extends Component {
               <li
                 key={index}
                 style={Styles.li}
+                onMouseOver={() => this.setState({ active: index })}
               >
                 <div style={{gridColumn: 1}}>
                   <img
