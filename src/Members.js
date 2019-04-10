@@ -19,10 +19,11 @@ class Members extends Component {
                 style={{
                   ...Styles.li,
                   ...this.state.active === index ?
-                    { background: '#DDEEFF  ', color : 'black', opacity: 1 } :
+                    { background: '#DDEEFF', color : 'black', opacity: 1 } :
                     { background: 'white', color : 'grey', opacity: 0.95 },
                 }}
                 onMouseOver={() => this.setState({ active: index })}
+                onMouseLeave={() => this.setState({ active: ''})}
               >
                 <div style={{gridColumn: 1}}>
                   <img
