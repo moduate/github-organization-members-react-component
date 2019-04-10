@@ -16,7 +16,12 @@ class Members extends Component {
             this.props.data.map( (member, index) =>
               <li
                 key={index}
-                style={Styles.li}
+                style={{
+                  ...Styles.li,
+                  ...this.state.active === index ?
+                    { background: '#DDEEFF  ', color : 'black', opacity: 1 } :
+                    { background: 'white', color : 'grey', opacity: 0.95 },
+                }}
                 onMouseOver={() => this.setState({ active: index })}
               >
                 <div style={{gridColumn: 1}}>
