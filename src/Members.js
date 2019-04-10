@@ -10,7 +10,9 @@ class Members extends Component {
 
   render() {
     return (
-      <ul>
+      <ul
+        onMouseLeave={() => this.setState({ active: ''})}
+      >
         {
           this.props.data.length?
             this.props.data.map( (member, index) =>
@@ -23,7 +25,6 @@ class Members extends Component {
                     { background: 'white', color : 'grey', opacity: 0.95 },
                 }}
                 onMouseOver={() => this.setState({ active: index })}
-                onMouseLeave={() => this.setState({ active: ''})}
               >
                 <div style={{gridColumn: 1}}>
                   <img
