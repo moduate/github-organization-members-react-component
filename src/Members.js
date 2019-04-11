@@ -9,13 +9,14 @@ class Members extends Component {
   }
 
   render() {
+    const { data } = this.props;
     return (
       <ul
         onMouseLeave={() => this.setState({ active: ''})}
       >
         {
-          this.props.data.length?
-            this.props.data.map( (member, index) =>
+          data.length?
+            data.map( (member, index) =>
               <li
                 key={index}
                 style={{
