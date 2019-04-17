@@ -1,48 +1,42 @@
-import React, { Component } from 'react';
-import gom from 'github-organization-members';
-import Members from './Members';
+import React, { useState } from "react";
+import gom from "github-organization-members";
+import Members from "./Members";
 
-class Organization extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      organization: "",
-      members: []
-     };
-  }
+const Organization = () => {
+  const [organization, setOrganization] = useState("");
+  const [members, setMembers] = useState([]);
 
-  updateOrganization = event => {
-    this.setState({ organization: event.target.value })
-  }
+  const updateOrganization = event => {
+    setOrganization(e.target.value);
+  };
 
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    gom.getPublicUsersFromOrg(this.state.organization, (err, result) => {
-      if(err) { console.log(err) }
-      this.setState({ members: result });
-    })
-  }
+    gom.getPublicUsersFromOrg(organization, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      setMembers(members);
+    });
+  };
 
-  render() {
-    return (
-      <div style={{padding: '20px 10px'}}>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Enter Organization
-            <input
-              style={{ marginLeft: 5 }}
-              type="text"
-              value={this.state.organization}
-              onChange={this.updateOrganization}
-              >
-            </input>
-          </label>
-          <button>Submit</button>
-        </form>
-        <Members data={this.state.members}></Members>
-      </div>
-    )
-  }
-}
+  return (
+    <div style={{ padding: "20px 10px" }}>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter Organization
+          <input
+            style={{ marginLeft: 5 }}
+            type="text"
+            value={organization}
+            onChange={updateOrganization}
+          />
+        </label>
+        <button>Submit</button>
+      </form>
+      <Members data={members} />
+    </div>
+  );
+};
 
 export default Organization;
