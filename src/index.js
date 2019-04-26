@@ -1,53 +1,48 @@
-import React, { Component } from 'react';
-import gom from 'github-organization-members';
+import React, { useState } from 'react';
+import { getPublicUsersFromOrg } from 'github-organization-members';
 import Members from './Members';
 
-class Organization extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      organization: "",
-      error: "",
-      members: []
-     };
+function Organization(props) {
+  const [organization, setOrganization] = useState("");
+  const [error, setError] = useState("");
+  const [members, setMembers] = useState([]);
+
+
+  const updateOrganization = event => {
+    setOrganization(event.target.value )
   }
 
-  updateOrganization = event => {
-    this.setState({ organization: event.target.value })
-  }
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    gom.getPublicUsersFromOrg(this.state.organization, (err, result) => {
+    getPublicUsersFromOrg(organization, (err, result) => {
       if(err) {
-        this.setState({ error: "Invalid organization name. Please try again!", members: [] });
+        setError("Invalid organization name. Please try again!");
+        setMembers([]);
         return err;
       }
-      this.setState({ members: result, error: "" });
+      setError("");
+      setMembers(result);
     })
   }
-
-  render() {
-    return (
-      <div style={{padding: '20px 10px'}}>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Enter Organization
-            <input
-              style={{ marginLeft: 5 }}
-              type="text"
-              value={this.state.organization}
-              onChange={this.updateOrganization}
-              >
-            </input>
-          </label>
-          <button>Submit</button>
-        </form>
-        <div style={{ color: 'red' }}>{this.state.error}</div>
-        <Members data={this.state.members}></Members>
-      </div>
-    )
-  }
+  return (
+    <div style={{padding: '20px 10px'}}>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter Organization
+          <input
+            style={{ marginLeft: 5 }}
+            type="text"
+            value={organization}
+            onChange={updateOrganization}
+            >
+          </input>
+        </label>
+        <button>Submit</button>
+      </form>
+      <div style={{ color: 'red' }}>{error}</div>
+      <Members data={members}></Members>
+    </div>
+  )
 }
 
 export default Organization;
