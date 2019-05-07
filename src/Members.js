@@ -9,21 +9,25 @@ class Members extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, org } = this.props;
     return (
-      <ul
-        onMouseLeave={() => this.setState({ active: ''})}
+      <div
+        style={{height: 500, overflowY: 'scroll', width: 600}}
       >
-        {
-          data.length?
+        Organization {org} contains {data.length} public members.
+        <ul
+          onMouseLeave={() => this.setState({ active: ''})}
+        >
+          {
+            data.length ?
             data.map( (member, index) =>
               <li
                 key={index}
                 style={{
                   ...Styles.li,
                   ...this.state.active === index ?
-                    { background: '#DDEEFF', color : 'black', opacity: 1 } :
-                    { background: 'white', color : 'grey', opacity: 0.95 },
+                  { background: '#DDEEFF', color : 'black', opacity: 1 } :
+                  { background: 'white', color : 'grey', opacity: 0.95 },
                 }}
                 onMouseOver={() => this.setState({ active: index })}
               >
@@ -32,7 +36,7 @@ class Members extends Component {
                     src={member.avatar_url}
                     style={Styles.img}
                     alt="avatar"
-                  />
+                    />
                 </div>
                 <div style={{gridColumn: 2, marginLeft: '20px'}}>
                   {member.login}
@@ -40,8 +44,9 @@ class Members extends Component {
               </li>
             ) :
             null
-        }
-      </ul>
+          }
+        </ul>
+      </div>
     )
   }
 }
