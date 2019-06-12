@@ -1,22 +1,5 @@
 import React, { useState } from "react";
 
-const Styles = {
-  li: {
-    borderBottom: "1px lightgrey solid",
-    listStyleType: "none",
-    display: "inline-block",
-    padding: "10px 20px",
-    display: "grid",
-    gridTemplateColumns: "100px 400px",
-    width: "500px"
-  },
-  img: {
-    width: 100,
-    height: 100,
-    display: "inline"
-  }
-};
-
 const Members = ({ data }) => {
   const [active, setActive] = useState("");
 
@@ -47,3 +30,20 @@ const Members = ({ data }) => {
 };
 
 export default Members;
+
+const Styles = {
+  li: {
+    borderBottom: "1px lightgrey solid",
+    listStyleType: "none",
+    display: "inline-block",
+    padding: "10px 20px",
+    display: "grid",
+    gridTemplateColumns: "100px 400px",
+    width: "500px"
+  },
+  img: {
+    width: 100,
+    height: 100,
+    display: "inline"
+  }
+};

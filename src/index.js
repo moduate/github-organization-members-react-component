@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import gom from "github-organization-members";
+import { getPublicUsersFromOrg } from "github-organization-members";
 import Members from "./Members";
 
-const Organization = () => {
+const Organization = props => {
   const [organization, setOrganization] = useState("");
   const [errors, setErrors] = useState("");
   const [members, setMembers] = useState([]);
@@ -13,7 +13,7 @@ const Organization = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    gom.getPublicUsersFromOrg(organization, (err, result) => {
+    getPublicUsersFromOrg(organization, (err, result) => {
       if (err) {
         setOrganization([]);
         setErrors("Invalid organization name. Please try again!");

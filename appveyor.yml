@@ -1,9 +1,21 @@
-image: ubuntu
+# Test against the latest version of this Node.js version
+environment:
+  nodejs_version: "10"
 
+# Install scripts. (runs after repo cloning)
 install:
-- npm install
+  # Get the latest stable version of Node.js or io.js
+  - sh: nvm install $nodejs_version
+  # install modules
+  - npm install
 
+# Post-install test scripts.
 test_script:
-- npm test
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
 
+# Don't actually build.
 build: off
