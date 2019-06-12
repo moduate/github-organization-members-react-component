@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { getPublicUsersFromOrg } from 'github-organization-members';
-import Members from './Members';
+import React, { useState } from "react";
+import { getPublicUsersFromOrg } from "github-organization-members";
+import Members from "./Members";
 
-function Organization(props) {
+const Organization = props => {
   const [organization, setOrganization] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
   const [members, setMembers] = useState([]);
 
-
   const updateOrganization = event => {
-    setOrganization(event.target.value )
-  }
+    setOrganization(event.target.value);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
     getPublicUsersFromOrg(organization, (err, result) => {
-      if(err) {
-        setError("Invalid organization name. Please try again!");
-        setMembers([]);
+      if (err) {
+        setOrganization([]);
+        setErrors("Invalid organization name. Please try again!");
         return err;
       }
-      setError("");
       setMembers(result);
-    })
-  }
+      setErrors("");
+    });
+  };
+
   return (
-    <div style={{padding: '20px 10px'}}>
+    <div style={{ padding: "20px 10px" }}>
       <form onSubmit={handleSubmit}>
         <label>
           Enter Organization
@@ -34,15 +34,14 @@ function Organization(props) {
             type="text"
             value={organization}
             onChange={updateOrganization}
-            >
-          </input>
+          />
         </label>
         <button>Submit</button>
       </form>
-      <div style={{ color: 'red' }}>{error}</div>
-      <Members data={members}></Members>
+      <div style={{ color: "red" }}>{error}</div>
+      <Members data={members} />
     </div>
-  )
-}
+  );
+};
 
 export default Organization;
